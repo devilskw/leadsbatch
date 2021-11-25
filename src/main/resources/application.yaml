@@ -1,0 +1,31 @@
+oauth2:
+  host: http://localhost:3210
+  path: /api/v1/example/oauth/token
+  client-id: 123456
+  client-secret: 654321
+leads:
+  host: http://localhost:3210
+  path: /api/v1/example/get
+  api-id: acbasdj
+  dtini: 01/08/2021
+  dtFim: 30/11/2021
+csv:
+  prefix: RelatorioRequisicao
+  date-format: yyyyMMddHHmmss
+batch:
+  qtde-tasks: 5
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 10000
+        loggerLevel: basic
+logging:
+  level:
+    - br.com.kazuo.leadsbatch.dataprovider.feign.leads: DEBUG
+    - br.com.kazuo.leadsbatch.dataprovider.feign.oauth2: DEBUG
+spring:
+  main:
+    allow-bean-definition-overriding: true
+    lazy-initialization: true
