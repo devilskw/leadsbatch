@@ -3,8 +3,6 @@ package br.com.kazuo.leadsbatch.app.config.properties;
 import br.com.kazuo.leadsbatch.common.utils.LeadsDateUtils;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -19,8 +17,6 @@ import java.util.Date;
 @ConfigurationProperties(prefix = "leads")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PropLeadsReq extends PropBaseUrl {
-    @JsonProperty("api-id")
-    @SerializedName("api-id")
     private String apiId;
     private String dtIni;
     private String dtFim;

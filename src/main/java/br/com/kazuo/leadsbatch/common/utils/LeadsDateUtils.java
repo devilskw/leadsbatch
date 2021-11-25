@@ -1,8 +1,11 @@
 package br.com.kazuo.leadsbatch.common.utils;
 
 import br.com.kazuo.leadsbatch.core.usecase.leads.dto.LeadControlPeriod;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.context.annotation.Configuration;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -56,6 +59,14 @@ public class LeadsDateUtils {
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.HOUR, 0);
         return calendar.getTime();
+    }
+
+    public String getCsvFilename(String prefix, String dtFormat, Date hoje) throws ParseException {
+        if (dtFormat != null && !dtFormat.isBlank()){
+            SimpleDateFormat sdf = new SimpleDateFormat(dtFormat);
+            return prefix.concat("_").concat(sdf.format(hoje)).concat(".csv");
+        }
+        return prefix.concat(".csv");
     }
 
 }

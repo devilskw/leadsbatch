@@ -1,19 +1,20 @@
 oauth2:
   host: http://localhost:3210
   path: /api/v1/example/oauth/token
-  client-id: 123456
-  client-secret: 654321
+  clientId: 123456
+  clientSecret: 654321
 leads:
   host: http://localhost:3210
   path: /api/v1/example/get
-  api-id: acbasdj
+  apiId: acbasdj
   dtini: 01/08/2021
   dtFim: 30/11/2021
 csv:
   prefix: RelatorioRequisicao
-  date-format: yyyyMMddHHmmss
+  dtformat: yyyyMMdd_HHmmss
+  append: true
 batch:
-  qtde-tasks: 5
+  qtdeTasks: 5
 feign:
   client:
     config:

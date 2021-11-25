@@ -72,7 +72,43 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+					<!-- avoid generating .jar.original -->
+					<skip>true</skip>
 				</configuration>
+			</plugin>
+			<!-- manual manifest -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>br.com.kazuo.leadsbatch.LeadsbatchApplication</mainClass>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>dependency-jars/</classpathPrefix>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.5.1</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>
+								${project.build.directory}/dependency-jars/
+							</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			<!-- copy outside jar -->
 			<plugin>
@@ -96,6 +132,19 @@
 				</executions>
 			</plugin>
 		</plugins>
+		<!-- final name -->
+		<finalName>leadsbatch</finalName>
+		<!-- exclude application.yaml from jar -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>*.properties</exclude>
+					<exclude>*.yaml</exclude>
+				</excludes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
 	</build>
 	<repositories>
 		<repository>
