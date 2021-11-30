@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "tokenRequest", url = "${leads.host}")
 public interface LeadsRequest {
     @RequestMapping(method = RequestMethod.GET, value = "${leads.path}", produces = "application/www-url-form-encoded", consumes = "application/json")
-    JsonRespBody requestLeadsPeriod(@RequestParam LeadsRequestDto params, @RequestHeader("Authorization") String token, @RequestHeader("api-id") String apiId);
+    JsonRespBody requestLeadsPeriod(@RequestParam LeadsRequestDto params
+            , @RequestHeader("Authorization") String token
+            , @RequestHeader("x-apigw-api-id") String apiId
+            , @RequestHeader("client-id") String clientId
+            , @RequestHeader("correlation-id") String correlationId
+    );
 }
 

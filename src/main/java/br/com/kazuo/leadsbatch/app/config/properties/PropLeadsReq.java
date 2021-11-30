@@ -20,6 +20,7 @@ public class PropLeadsReq extends PropBaseUrl {
     private String apiId;
     private String dtIni;
     private String dtFim;
+    private String indicador;
 
     @JsonIgnore
     public static final Integer PERIOD_LIMIT_DAYS = 30;

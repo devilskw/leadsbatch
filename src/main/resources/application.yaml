@@ -9,6 +9,7 @@ leads:
   apiId: acbasdj
   dtini: 01/08/2021
   dtFim: 30/11/2021
+  indicador: FULANO
 csv:
   prefix: RelatorioRequisicao
   dtformat: yyyyMMdd_HHmmss

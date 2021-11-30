@@ -13,13 +13,29 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LeadsRequestDto {
+    @JsonProperty("pagina")
+    @SerializedName("pagina")
     private Integer page;
-    @JsonProperty("data_inicial")
-    @SerializedName("data_inicial")
+
+    @JsonProperty("data_inicio")
+    @SerializedName("data_inicio")
     private Date dtini;
-    @JsonProperty("data_final")
-    @SerializedName("data_final")
+
+    @JsonProperty("data_fim")
+    @SerializedName("data_fim")
     private Date dtFim;
+
+    @JsonProperty("codigo_status")
+    @SerializedName("codigo_status")
+    private Integer codStatus = 0;
+
+    @JsonProperty("codigo_vendedor")
+    @SerializedName("codigo_vendedor")
+    private String codVendedor = "0";
+
+    @JsonProperty("codigo_parceiro_indicador")
+    @SerializedName("codigo_parceiro_indicador")
+    private String codParceiroIndicador;
 
     /*
     public String getUrlQueryParam() {
